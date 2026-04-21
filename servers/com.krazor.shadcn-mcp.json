@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.krazor.shadcn-mcp",
+  "name": "Shadcn Enhanced",
+  "alias": "shadcn-enhanced",
+  "description": "Enhanced shadcn/ui MCP server with global registry support and multiple component registries including @shadcn, @cult-ui, @magicui, @aceternity, and @react-bits",
+  "icon": "🎨",
+  "schema_version": "2.1",
+  "categories": ["developer-tools"],
+  "tags": ["shadcn", "ui", "components", "registry", "react", "tailwind", "design-system"],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@krazor/shadcn-mcp"],
+    "env": {
+      "DEFAULT_REGISTRY": "${input:default_registry}",
+      "ADDITIONAL_REGISTRIES": "${input:additional_registries}",
+      "AUTO_INSTALL_DEPS": "${input:auto_install_deps}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "default_registry",
+          "type": "text",
+          "label": "Default Registry",
+          "description": "Default registry for components. Options: @shadcn, @cult-ui, @magicui, @aceternity, @react-bits",
+          "default": "@shadcn",
+          "placeholder": "@shadcn",
+          "required": false
+        },
+        {
+          "id": "additional_registries",
+          "type": "text",
+          "label": "Additional Registries",
+          "description": "Comma-separated list of additional registries",
+          "placeholder": "@cult-ui,@magicui",
+          "required": false
+        },
+        {
+          "id": "auto_install_deps",
+          "type": "text",
+          "label": "Auto-install Dependencies",
+          "description": "Automatically install component dependencies. Enter 'true' or 'false'",
+          "default": "true",
+          "placeholder": "true",
+          "required": false
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "No authentication required"
+  },
+  "contributor": {
+    "name": "krazor",
+    "github": "krazor"
+  },
+  "links": {
+    "repository": "https://github.com/krazor/shadcn-mcp",
+    "documentation": "https://www.npmjs.com/package/@krazor/shadcn-mcp"
+  },
+  "platforms": ["windows", "macos", "linux"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}

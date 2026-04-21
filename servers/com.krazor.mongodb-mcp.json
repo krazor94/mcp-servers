@@ -1,0 +1,70 @@
+{
+  "$schema": "../schemas/server-definition.schema.json",
+  "id": "com.krazor.mongodb-mcp",
+  "name": "MongoDB",
+  "alias": "mongodb",
+  "description": "MongoDB MCP Server - Connect to MongoDB databases and perform CRUD operations, aggregations, and index management",
+  "icon": "🍃",
+  "schema_version": "2.1",
+  "categories": ["database", "developer-tools"],
+  "tags": ["mongodb", "database", "mongo", "crud", "nosql", "collections", "documents"],
+  "transport": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@krazor/mongodb-mcp"],
+    "env": {
+      "MONGODB_URI": "${input:mongodb_uri}",
+      "MONGODB_DB_NAME": "${input:database_name}",
+      "MONGODB_TIMEOUT": "${input:connection_timeout}"
+    },
+    "metadata": {
+      "inputs": [
+        {
+          "id": "mongodb_uri",
+          "type": "text",
+          "label": "MongoDB URI",
+          "description": "MongoDB connection string. Format: mongodb://username:password@host:port/database",
+          "placeholder": "mongodb://localhost:27017/mydb",
+          "default": "mongodb://localhost:27017",
+          "required": true
+        },
+        {
+          "id": "database_name",
+          "type": "text",
+          "label": "Database Name",
+          "description": "Default database name (optional - can be specified per query)",
+          "placeholder": "my_database",
+          "required": false
+        },
+        {
+          "id": "connection_timeout",
+          "type": "text",
+          "label": "Connection Timeout (ms)",
+          "description": "How long to wait for connection before timing out",
+          "default": "30000",
+          "placeholder": "30000",
+          "required": false
+        }
+      ]
+    }
+  },
+  "auth": {
+    "type": "none",
+    "instructions": "Authentication is handled via the MongoDB connection URI"
+  },
+  "contributor": {
+    "name": "krazor",
+    "github": "krazor"
+  },
+  "links": {
+    "repository": "https://github.com/krazor/mongodb-mcp",
+    "documentation": "https://www.npmjs.com/package/@krazor/mongodb-mcp"
+  },
+  "platforms": ["windows", "macos", "linux"],
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "read_only_mode": false
+  }
+}
